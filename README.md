@@ -1,7 +1,7 @@
 # Fluxo de Assinatura - Automação de Testes
 
 ## Visão Geral
-Este projeto implementa testes automatizados para o fluxo de criação de assinaturas na plataforma EcoTX, utilizando Selenium WebDriver e seguindo o padrão Page Object Model (POM).
+Este projeto implementa testes automatizados para o fluxo de criação de assinaturas, utilizando Selenium WebDriver e seguindo o padrão Page Object Model (POM).
 
 ## Tecnologias Utilizadas
 - **Python**: Linguagem de programação principal
