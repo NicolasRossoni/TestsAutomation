@@ -1,0 +1,13 @@
+2025-03-31 12:21:47 - DEBUG - 🛠️ Configurando ambiente para o teste
+2025-03-31 12:24:12 - ERROR - ❌ Erro: O elemento não desapareceu dentro de 120 segundos. -> Elemento:('xpath', '//*[@id="splash-screen"]')
+2025-03-31 2025-03-31 12:24:28 - ERROR - ❌ Erro: O elemento não desaparec2025-03-31 12:24:42 - DEBUG - ℹ️ Login efetuado e ambiente Web carregado!
+2025-03-31 12:24:42 - DEBUG - ℹ️ Organização trocada para: Vigilant.
+2025-03-31 12:25:11 - DEBUG - ℹ️ Login efetuado e ambiente Web carregado!
+2025-03-31 12:25:11 - DEBUG - ℹ️ Area trocada para: Backoffice.
+2025-03-31 12:25:27 - DEBUG - ℹ️ Login efetuado e ambiente Backoffice carregado!
+2025-03-31 12:25:33 - DEBUG - ℹ️ Area trocada para: Gerenciamento de Assinaturas.
+2025-03-31 12:25:33 - DEBUG - ℹ️ Sub-area trocada para: Criar nova assinatura.
+2025-03-31 12:25:52 - DEBUG - ℹ️ Usuário e Organização selecionados.
+2025-03-31 12:26:07 - DEBUG - ℹ️ Assinatura preenchida para o acesso 'ecotx-level-1' com cobrança no Asaas[False] e chave = 18.
+2025-03-31 12:26:09 - INFO - ✅ Assinatura criada para o acesso 'ecotx-level-1' com cobrança no Asaas[False] e chave = 18.
+2025-03-31 12:26:10 - DEBUG - 🔄 Ambiente zerado após o teste.

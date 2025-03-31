@@ -1,0 +1,6 @@
+2025-03-17 11:35:38 - INFO - Este log será salvo no arquivo.
+2025-03-17 11:35:38 - WARNING - ⚠️ Isso também!
+2025-03-17 11:35:38 - INFO - Isso é um log de informação.
+2025-03-17 11:35:38 - WARNING - ⚠️ Aviso! Algo pode estar errado.
+2025-03-17 11:35:38 - ERROR - ❌ Erro! Algo falhou.
+2025-03-17 11:35:38 - CRITICAL - 🔥 Erro crítico! O sistema pode falhar!

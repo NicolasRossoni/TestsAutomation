@@ -1,0 +1,7 @@
+selenium==4.10.0
+selenium-wire==5.1.0
+pytest==7.3.1
+pytest-html==3.2.0
+pytest-xdist==3.3.1
+webdriver-manager==3.8.6
+blinker==1.6.2 
