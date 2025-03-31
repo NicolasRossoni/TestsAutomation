@@ -124,5 +124,5 @@ class TestLogin(unittest.TestCase):
 if __name__ == "__main__":
     unittest.main()
 
-# Para gerar relatorio:
-# pytest fluxo_assinatura/TestSuit.py -n auto--html=fluxo_assinatura/TestSuit_report.html
+# Para rodar e gerar relatório:
+# pytest TestSuit.py -n auto --html=TestSuit_report.html

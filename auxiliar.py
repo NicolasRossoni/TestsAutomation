@@ -67,6 +67,6 @@ logger.setLevel(logging.DEBUG)
 formatter = logging.Formatter("%(asctime)s - %(levelname)s - %(message)s", datefmt="%Y-%m-%d %H:%M:%S")
 
 # Handler para o arquivo de log
-file_handler = logging.FileHandler("fluxo_assinatura/TestSuit.log", mode="w")
+file_handler = logging.FileHandler("TestSuit.log", mode="w")
 file_handler.setFormatter(formatter)
 logger.addHandler(file_handler)
