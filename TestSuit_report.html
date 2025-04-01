@@ -253,10 +253,10 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
 }
 </script>
     <h1>TestSuit_report.html</h1>
-    <p>Report generated on 31-Mar-2025 at 14:09:46 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v3.2.0</p>
+    <p>Report generated on 01-Apr-2025 at 09:36:04 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v3.2.0</p>
     <h2>Summary</h2>
-    <p>6 tests ran in 320.32 seconds. </p>
-    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="passed">5 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="failed">1 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>
+    <p>1 tests ran in 310.14 seconds. </p>
+    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="passed">0 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="failed">1 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>
     <h2>Results</h2>
     <table id="results-table">
       <thead id="results-table-head">
@@ -271,131 +271,15 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
         <tr>
           <td class="col-result">Failed</td>
           <td class="col-name">TestSuit.py::TestLogin::test_venda_mais_com_asaas</td>
-          <td class="col-duration">149.26</td>
+          <td class="col-duration">307.86</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="log">[gw4] linux -- Python 3.8.10 /usr/bin/python3<br/>[gw4] linux -- Python 3.8.10 /usr/bin/python3[gw4] linux -- Python 3.8.10 /usr/bin/python3<br/><br/>self = &lt;TestSuit.TestLogin testMethod=test_venda_mais_com_asaas&gt;<br/><br/>    def test_venda_mais_com_asaas(self):<br/>&gt;       self.verificar_criacao_assinatura(&quot;Venda+&quot;, True)<br/><br/>TestSuit.py:111: <br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/>TestSuit.py:90: in verificar_criacao_assinatura<br/>    self.fail(f&quot;Erro na requisição para {tipo_assinatura}: Status {request.response.status_code}&quot;)<br/><span class="error">E   AssertionError: Erro na requisição para Venda+: Status 500[gw4] linux -- Python 3.8.10 /usr/bin/python3</span><br/> ------------------------------Captured stdout call------------------------------ <br/>
-=== RESPOSTA DA API ===
-{&#x27;error&#x27;: &#x27;Internal Server Error&#x27;,
- &#x27;path&#x27;: &#x27;/api/core/orders/subscription/salesplus&#x27;,
- &#x27;status&#x27;: 500,
- &#x27;timestamp&#x27;: &#x27;2025-03-31T17:06:56.802+00:00&#x27;}
-======================
-
-<br/> -------------------------------Captured log call-------------------------------- <br/>DEBUG    MeuLogger:TestSuit.py:38 🛠️ Configurando ambiente para o teste
+            <div class="log">[gw0] linux -- Python 3.11.4 /home/nicobico/Documents/TestsAutomation/venv/bin/python<br/>[gw0] linux -- Python 3.11.4 /home/nicobico/Documents/TestsAutomation/venv/bin/python[gw0] linux -- Python 3.11.4 /home/nicobico/Documents/TestsAutomation/venv/bin/python<br/><br/>self = &lt;TestSuit.TestLogin testMethod=test_venda_mais_com_asaas&gt;<br/><br/>    def setUp(self):<br/>        logger.debug(&quot;🛠️ Configurando ambiente para o teste&quot;)<br/>    <br/>        # Configura as opções do navegador Chrome<br/>        self.options = Options()<br/>        #self.options.add_argument(&quot;--headless&quot;)<br/>        self.options.add_argument(&quot;--start-maximized&quot;)<br/>        self.service = Service(&quot;drivers/chromedriver&quot;)<br/>        self.driver = webdriver.Chrome(service=self.service, options=self.options)<br/>    <br/>        # Acessa a URL da plataforma<br/>        self.driver.get(&quot;https://platform.ecotx.dev/&quot;)<br/>    <br/>        # Inicializa as páginas que serão utilizadas nos testes<br/>        self.login_page = Pages.LoginPage(self.driver)<br/>        self.web_page = Pages.MainWebPage(self.driver)<br/>        self.backoffice = Pages.Backoffice(self.driver)<br/>        self.backoffice_criar_assinatura = Pages.BackofficeCriarAssinatura(self.driver)<br/>    <br/>        # Efetua login na plataforma<br/>        self.login_page.preencher_usuario(&quot;nicolas.o.rossoni@gmail.com&quot;)<br/>        self.login_page.preencher_senha(&quot;123456&quot;)<br/>        self.login_page.clicar_login()<br/>        self.login_page.aguardar_carregar()<br/>    <br/>        # Navega até a área de criação de assinaturas no backoffice<br/>        self.web_page.trocar_org(&quot;Vigilant&quot;)<br/>        self.web_page.trocar_area(&quot;Backoffice&quot;)<br/>        self.driver.switch_to.window(self.driver.window_handles[-1])<br/>        self.backoffice.aguardar_carregar()<br/>&gt;       self.backoffice.trocar_area(&quot;Gerenciamento de Assinaturas&quot;)<br/><br/>TestSuit.py:67: <br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/>Pages.py:130: in trocar_area<br/>    areas_list = aux.find_element(self.driver, self.areas_lsit)<br/>auxiliar.py:31: in find_element<br/>    element = WebDriverWait(driver, tempo).until(<br/>venv/lib/python3.11/site-packages/selenium/webdriver/support/wait.py:86: in until<br/>    value = method(self._driver)<br/>venv/lib/python3.11/site-packages/selenium/webdriver/support/expected_conditions.py:82: in _predicate<br/>    return driver.find_element(*locator)<br/>venv/lib/python3.11/site-packages/selenium/webdriver/remote/webdriver.py:740: in find_element<br/>    return self.execute(Command.FIND_ELEMENT, {&quot;using&quot;: by, &quot;value&quot;: value})[&quot;value&quot;]<br/>venv/lib/python3.11/site-packages/selenium/webdriver/remote/webdriver.py:346: in execute<br/>    self.error_handler.check_response(response)<br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/><br/>self = &lt;selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x7fbf4975b1d0&gt;<br/>response = {&#x27;status&#x27;: 404, &#x27;value&#x27;: &#x27;{&quot;value&quot;:{&quot;error&quot;:&quot;invalid session id&quot;,&quot;message&quot;:&quot;invalid session id: session deleted as the...\\n#15 0x55a17c837eb6 \\u003Cunknown&gt;\\n#16 0x55a17c847f16 \\u003Cunknown&gt;\\n#17 0x7faae028f6ba \\u003Cunknown&gt;\\n&quot;}}&#x27;}<br/><br/>    def check_response(self, response: Dict[str, Any]) -&gt; None:<br/>        &quot;&quot;&quot;Checks that a JSON response from the WebDriver does not have an<br/>        error.<br/>    <br/>        :Args:<br/>         - response - The JSON response from the WebDriver server as a dictionary<br/>           object.<br/>    <br/>        :Raises: If the response contains an error message.<br/>        &quot;&quot;&quot;<br/>        status = response.get(&quot;status&quot;, None)<br/>        if not status or status == ErrorCode.SUCCESS:<br/>            return<br/>        value = None<br/>        message = response.get(&quot;message&quot;, &quot;&quot;)<br/>        screen: str = response.get(&quot;screen&quot;, &quot;&quot;)<br/>        stacktrace = None<br/>        if isinstance(status, int):<br/>            value_json = response.get(&quot;value&quot;, None)<br/>            if value_json and isinstance(value_json, str):<br/>                import json<br/>    <br/>                try:<br/>                    value = json.loads(value_json)<br/>                    if len(value) == 1:<br/>                        value = value[&quot;value&quot;]<br/>                    status = value.get(&quot;error&quot;, None)<br/>                    if not status:<br/>                        status = value.get(&quot;status&quot;, ErrorCode.UNKNOWN_ERROR)<br/>                        message = value.get(&quot;value&quot;) or value.get(&quot;message&quot;)<br/>                        if not isinstance(message, str):<br/>                            value = message<br/>                            message = message.get(&quot;message&quot;)<br/>                    else:<br/>                        message = value.get(&quot;message&quot;, None)<br/>                except ValueError:<br/>                    pass<br/>    <br/>        exception_class: Type[WebDriverException]<br/>        if status in ErrorCode.NO_SUCH_ELEMENT:<br/>            exception_class = NoSuchElementException<br/>        elif status in ErrorCode.NO_SUCH_FRAME:<br/>            exception_class = NoSuchFrameException<br/>        elif status in ErrorCode.NO_SUCH_SHADOW_ROOT:<br/>            exception_class = NoSuchShadowRootException<br/>        elif status in ErrorCode.NO_SUCH_WINDOW:<br/>            exception_class = NoSuchWindowException<br/>        elif status in ErrorCode.STALE_ELEMENT_REFERENCE:<br/>            exception_class = StaleElementReferenceException<br/>        elif status in ErrorCode.ELEMENT_NOT_VISIBLE:<br/>            exception_class = ElementNotVisibleException<br/>        elif status in ErrorCode.INVALID_ELEMENT_STATE:<br/>            exception_class = InvalidElementStateException<br/>        elif (<br/>            status in ErrorCode.INVALID_SELECTOR<br/>            or status in ErrorCode.INVALID_XPATH_SELECTOR<br/>            or status in ErrorCode.INVALID_XPATH_SELECTOR_RETURN_TYPER<br/>        ):<br/>            exception_class = InvalidSelectorException<br/>        elif status in ErrorCode.ELEMENT_IS_NOT_SELECTABLE:<br/>            exception_class = ElementNotSelectableException<br/>        elif status in ErrorCode.ELEMENT_NOT_INTERACTABLE:<br/>            exception_class = ElementNotInteractableException<br/>        elif status in ErrorCode.INVALID_COOKIE_DOMAIN:<br/>            exception_class = InvalidCookieDomainException<br/>        elif status in ErrorCode.UNABLE_TO_SET_COOKIE:<br/>            exception_class = UnableToSetCookieException<br/>        elif status in ErrorCode.TIMEOUT:<br/>            exception_class = TimeoutException<br/>        elif status in ErrorCode.SCRIPT_TIMEOUT:<br/>            exception_class = TimeoutException<br/>        elif status in ErrorCode.UNKNOWN_ERROR:<br/>            exception_class = WebDriverException<br/>        elif status in ErrorCode.UNEXPECTED_ALERT_OPEN:<br/>            exception_class = UnexpectedAlertPresentException<br/>        elif status in ErrorCode.NO_ALERT_OPEN:<br/>            exception_class = NoAlertPresentException<br/>        elif status in ErrorCode.IME_NOT_AVAILABLE:<br/>            exception_class = ImeNotAvailableException<br/>        elif status in ErrorCode.IME_ENGINE_ACTIVATION_FAILED:<br/>            exception_class = ImeActivationFailedException<br/>        elif status in ErrorCode.MOVE_TARGET_OUT_OF_BOUNDS:<br/>            exception_class = MoveTargetOutOfBoundsException<br/>        elif status in ErrorCode.JAVASCRIPT_ERROR:<br/>            exception_class = JavascriptException<br/>        elif status in ErrorCode.SESSION_NOT_CREATED:<br/>            exception_class = SessionNotCreatedException<br/>        elif status in ErrorCode.INVALID_ARGUMENT:<br/>            exception_class = InvalidArgumentException<br/>        elif status in ErrorCode.NO_SUCH_COOKIE:<br/>            exception_class = NoSuchCookieException<br/>        elif status in ErrorCode.UNABLE_TO_CAPTURE_SCREEN:<br/>            exception_class = ScreenshotException<br/>        elif status in ErrorCode.ELEMENT_CLICK_INTERCEPTED:<br/>            exception_class = ElementClickInterceptedException<br/>        elif status in ErrorCode.INSECURE_CERTIFICATE:<br/>            exception_class = InsecureCertificateException<br/>        elif status in ErrorCode.INVALID_COORDINATES:<br/>            exception_class = InvalidCoordinatesException<br/>        elif status in ErrorCode.INVALID_SESSION_ID:<br/>            exception_class = InvalidSessionIdException<br/>        elif status in ErrorCode.UNKNOWN_METHOD:<br/>            exception_class = UnknownMethodException<br/>        else:<br/>            exception_class = WebDriverException<br/>        if not value:<br/>            value = response[&quot;value&quot;]<br/>        if isinstance(value, str):<br/>            raise exception_class(value)<br/>        if message == &quot;&quot; and &quot;message&quot; in value:<br/>            message = value[&quot;message&quot;]<br/>    <br/>        screen = None  # type: ignore[assignment]<br/>        if &quot;screen&quot; in value:<br/>            screen = value[&quot;screen&quot;]<br/>    <br/>        stacktrace = None<br/>        st_value = value.get(&quot;stackTrace&quot;) or value.get(&quot;stacktrace&quot;)<br/>        if st_value:<br/>            if isinstance(st_value, str):<br/>                stacktrace = st_value.split(&quot;\n&quot;)<br/>            else:<br/>                stacktrace = []<br/>                try:<br/>                    for frame in st_value:<br/>                        line = frame.get(&quot;lineNumber&quot;, &quot;&quot;)<br/>                        file = frame.get(&quot;fileName&quot;, &quot;&lt;anonymous&gt;&quot;)<br/>                        if line:<br/>                            file = f&quot;{file}:{line}&quot;<br/>                        meth = frame.get(&quot;methodName&quot;, &quot;&lt;anonymous&gt;&quot;)<br/>                        if &quot;className&quot; in frame:<br/>                            meth = f&quot;{frame[&#x27;className&#x27;]}.{meth}&quot;<br/>                        msg = &quot;    at %s (%s)&quot;<br/>                        msg = msg % (meth, file)<br/>                        stacktrace.append(msg)<br/>                except TypeError:<br/>                    pass<br/>        if exception_class == UnexpectedAlertPresentException:<br/>            alert_text = None<br/>            if &quot;data&quot; in value:<br/>                alert_text = value[&quot;data&quot;].get(&quot;text&quot;)<br/>            elif &quot;alert&quot; in value:<br/>                alert_text = value[&quot;alert&quot;].get(&quot;text&quot;)<br/>            raise exception_class(message, screen, stacktrace, alert_text)  # type: ignore[call-arg]  # mypy is not smart enough here<br/>&gt;       raise exception_class(message, screen, stacktrace)<br/><span class="error">E       selenium.common.exceptions.InvalidSessionIdException: Message: invalid session id: session deleted as the browser has closed the connection</span><br/><span class="error">E       from disconnected: not connected to DevTools</span><br/><span class="error">E         (Session info: chrome=134.0.6998.165)</span><br/><span class="error">E       Stacktrace:</span><br/><span class="error">E       #0 0x55a17c84909a &lt;unknown&gt;</span><br/><span class="error">E       #1 0x55a17c3108b0 &lt;unknown&gt;</span><br/><span class="error">E       #2 0x55a17c2f643e &lt;unknown&gt;</span><br/><span class="error">E       #3 0x55a17c31ee01 &lt;unknown&gt;</span><br/><span class="error">E       #4 0x55a17c3902b9 &lt;unknown&gt;</span><br/><span class="error">E       #5 0x55a17c3ad505 &lt;unknown&gt;</span><br/><span class="error">E       #6 0x55a17c387753 &lt;unknown&gt;</span><br/><span class="error">E       #7 0x55a17c35338e &lt;unknown&gt;</span><br/><span class="error">E       #8 0x55a17c354b51 &lt;unknown&gt;</span><br/><span class="error">E       #9 0x55a17c81276b &lt;unknown&gt;</span><br/><span class="error">E       #10 0x55a17c8166f2 &lt;unknown&gt;</span><br/><span class="error">E       #11 0x55a17c7fe8fc &lt;unknown&gt;</span><br/><span class="error">E       #12 0x55a17c8172e4 &lt;unknown&gt;</span><br/><span class="error">E       #13 0x55a17c7e29cf &lt;unknown&gt;</span><br/><span class="error">E       #14 0x55a17c837cd8 &lt;unknown&gt;</span><br/><span class="error">E       #15 0x55a17c837eb6 &lt;unknown&gt;</span><br/><span class="error">E       #16 0x55a17c847f16 &lt;unknown&gt;</span><br/><span class="error">E       #17 0x7faae028f6ba &lt;unknown&gt;</span><br/><br/>venv/lib/python3.11/site-packages/selenium/webdriver/remote/errorhandler.py:245: InvalidSessionIdException[gw0] linux -- Python 3.11.4 /home/nicobico/Documents/TestsAutomation/venv/bin/python<br/> -------------------------------Captured log call-------------------------------- <br/>DEBUG    MeuLogger:TestSuit.py:38 🛠️ Configurando ambiente para o teste
 DEBUG    MeuLogger:Pages.py:55 ℹ️ Login efetuado e ambiente Web carregado!
 DEBUG    MeuLogger:Pages.py:80 ℹ️ Organização trocada para: Vigilant.
-DEBUG    MeuLogger:Pages.py:89 ℹ️ Login efetuado e ambiente Web carregado!
-DEBUG    MeuLogger:Pages.py:103 ℹ️ Area trocada para: Backoffice.
-DEBUG    MeuLogger:Pages.py:118 ℹ️ Login efetuado e ambiente Backoffice carregado!
-DEBUG    MeuLogger:Pages.py:133 ℹ️ Area trocada para: Gerenciamento de Assinaturas.
-DEBUG    MeuLogger:Pages.py:138 ℹ️ Sub-area trocada para: Criar nova assinatura.
-DEBUG    MeuLogger:Pages.py:182 ℹ️ Usuário e Organização selecionados.
-DEBUG    MeuLogger:Pages.py:231 ℹ️ Assinatura preenchida para o acesso &#x27;ecotx-vendamais&#x27; com cobrança no Asaas[True] e chave = 22.
-ERROR    MeuLogger:TestSuit.py:86 ❌ Erro: A requisição teve status 500
-DEBUG    MeuLogger:TestSuit.py:122 🔄 Ambiente zerado após o teste.<br/></div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">TestSuit.py::TestLogin::test_professional_com_asaas</td>
-          <td class="col-duration">148.07</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="log">[gw0] linux -- Python 3.8.10 /usr/bin/python3<br/>[gw0] linux -- Python 3.8.10 /usr/bin/python3[gw0] linux -- Python 3.8.10 /usr/bin/python3[gw0] linux -- Python 3.8.10 /usr/bin/python3<br/> -------------------------------Captured log call-------------------------------- <br/>DEBUG    MeuLogger:TestSuit.py:38 🛠️ Configurando ambiente para o teste
-DEBUG    MeuLogger:Pages.py:55 ℹ️ Login efetuado e ambiente Web carregado!
-DEBUG    MeuLogger:Pages.py:80 ℹ️ Organização trocada para: Vigilant.
-DEBUG    MeuLogger:Pages.py:89 ℹ️ Login efetuado e ambiente Web carregado!
-DEBUG    MeuLogger:Pages.py:103 ℹ️ Area trocada para: Backoffice.
-DEBUG    MeuLogger:Pages.py:118 ℹ️ Login efetuado e ambiente Backoffice carregado!
-DEBUG    MeuLogger:Pages.py:133 ℹ️ Area trocada para: Gerenciamento de Assinaturas.
-DEBUG    MeuLogger:Pages.py:138 ℹ️ Sub-area trocada para: Criar nova assinatura.
-DEBUG    MeuLogger:Pages.py:182 ℹ️ Usuário e Organização selecionados.
-DEBUG    MeuLogger:Pages.py:231 ℹ️ Assinatura preenchida para o acesso &#x27;ecotx-level-2&#x27; com cobrança no Asaas[True] e chave = 20.
-INFO     MeuLogger:TestSuit.py:92 ✅ Assinatura criada para o acesso &#x27;ecotx-level-2&#x27; com cobrança no Asaas[True] e chave = 20.
-DEBUG    MeuLogger:TestSuit.py:122 🔄 Ambiente zerado após o teste.<br/></div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">TestSuit.py::TestLogin::test_standard_com_asaas</td>
-          <td class="col-duration">147.64</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="log">[gw2] linux -- Python 3.8.10 /usr/bin/python3<br/>[gw2] linux -- Python 3.8.10 /usr/bin/python3[gw2] linux -- Python 3.8.10 /usr/bin/python3[gw2] linux -- Python 3.8.10 /usr/bin/python3<br/> -------------------------------Captured log call-------------------------------- <br/>DEBUG    MeuLogger:TestSuit.py:38 🛠️ Configurando ambiente para o teste
-DEBUG    MeuLogger:Pages.py:55 ℹ️ Login efetuado e ambiente Web carregado!
-DEBUG    MeuLogger:Pages.py:80 ℹ️ Organização trocada para: Vigilant.
-DEBUG    MeuLogger:Pages.py:89 ℹ️ Login efetuado e ambiente Web carregado!
-DEBUG    MeuLogger:Pages.py:103 ℹ️ Area trocada para: Backoffice.
-DEBUG    MeuLogger:Pages.py:118 ℹ️ Login efetuado e ambiente Backoffice carregado!
-DEBUG    MeuLogger:Pages.py:133 ℹ️ Area trocada para: Gerenciamento de Assinaturas.
-DEBUG    MeuLogger:Pages.py:138 ℹ️ Sub-area trocada para: Criar nova assinatura.
-DEBUG    MeuLogger:Pages.py:182 ℹ️ Usuário e Organização selecionados.
-DEBUG    MeuLogger:Pages.py:231 ℹ️ Assinatura preenchida para o acesso &#x27;ecotx-level-1&#x27; com cobrança no Asaas[True] e chave = 85.
-INFO     MeuLogger:TestSuit.py:92 ✅ Assinatura criada para o acesso &#x27;ecotx-level-1&#x27; com cobrança no Asaas[True] e chave = 85.
-DEBUG    MeuLogger:TestSuit.py:122 🔄 Ambiente zerado após o teste.<br/></div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">TestSuit.py::TestLogin::test_venda_mais_sem_asaas</td>
-          <td class="col-duration">315.87</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="log">[gw5] linux -- Python 3.8.10 /usr/bin/python3<br/>[gw5] linux -- Python 3.8.10 /usr/bin/python3[gw5] linux -- Python 3.8.10 /usr/bin/python3[gw5] linux -- Python 3.8.10 /usr/bin/python3<br/> -------------------------------Captured log call-------------------------------- <br/>DEBUG    MeuLogger:TestSuit.py:38 🛠️ Configurando ambiente para o teste
 ERROR    MeuLogger:auxiliar.py:49 ❌ Erro: O elemento não desapareceu dentro de 120 segundos. -&gt; Elemento:(&#x27;xpath&#x27;, &#x27;//*[@id=&quot;splash-screen&quot;]&#x27;)
-DEBUG    MeuLogger:Pages.py:59 ⚠️ Tentativa 1: Recarregando a página...
-DEBUG    MeuLogger:Pages.py:55 ℹ️ Login efetuado e ambiente Web carregado!
-DEBUG    MeuLogger:Pages.py:80 ℹ️ Organização trocada para: Vigilant.
+DEBUG    MeuLogger:Pages.py:93 ⚠️ Tentativa 1: Recarregando a página...
 DEBUG    MeuLogger:Pages.py:89 ℹ️ Login efetuado e ambiente Web carregado!
 DEBUG    MeuLogger:Pages.py:103 ℹ️ Area trocada para: Backoffice.
-DEBUG    MeuLogger:Pages.py:118 ℹ️ Login efetuado e ambiente Backoffice carregado!
-DEBUG    MeuLogger:Pages.py:133 ℹ️ Area trocada para: Gerenciamento de Assinaturas.
-DEBUG    MeuLogger:Pages.py:138 ℹ️ Sub-area trocada para: Criar nova assinatura.
-DEBUG    MeuLogger:Pages.py:182 ℹ️ Usuário e Organização selecionados.
-DEBUG    MeuLogger:Pages.py:231 ℹ️ Assinatura preenchida para o acesso &#x27;ecotx-vendamais&#x27; com cobrança no Asaas[False] e chave = 80.
-INFO     MeuLogger:TestSuit.py:92 ✅ Assinatura criada para o acesso &#x27;ecotx-vendamais&#x27; com cobrança no Asaas[False] e chave = 80.
-DEBUG    MeuLogger:TestSuit.py:122 🔄 Ambiente zerado após o teste.<br/></div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">TestSuit.py::TestLogin::test_professional_sem_asaas</td>
-          <td class="col-duration">149.41</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="log">[gw1] linux -- Python 3.8.10 /usr/bin/python3<br/>[gw1] linux -- Python 3.8.10 /usr/bin/python3[gw1] linux -- Python 3.8.10 /usr/bin/python3[gw1] linux -- Python 3.8.10 /usr/bin/python3<br/> -------------------------------Captured log call-------------------------------- <br/>DEBUG    MeuLogger:TestSuit.py:38 🛠️ Configurando ambiente para o teste
-DEBUG    MeuLogger:Pages.py:55 ℹ️ Login efetuado e ambiente Web carregado!
-DEBUG    MeuLogger:Pages.py:80 ℹ️ Organização trocada para: Vigilant.
-DEBUG    MeuLogger:Pages.py:89 ℹ️ Login efetuado e ambiente Web carregado!
-DEBUG    MeuLogger:Pages.py:103 ℹ️ Area trocada para: Backoffice.
-DEBUG    MeuLogger:Pages.py:118 ℹ️ Login efetuado e ambiente Backoffice carregado!
-DEBUG    MeuLogger:Pages.py:133 ℹ️ Area trocada para: Gerenciamento de Assinaturas.
-DEBUG    MeuLogger:Pages.py:138 ℹ️ Sub-area trocada para: Criar nova assinatura.
-DEBUG    MeuLogger:Pages.py:182 ℹ️ Usuário e Organização selecionados.
-DEBUG    MeuLogger:Pages.py:231 ℹ️ Assinatura preenchida para o acesso &#x27;ecotx-level-2&#x27; com cobrança no Asaas[False] e chave = 60.
-INFO     MeuLogger:TestSuit.py:92 ✅ Assinatura criada para o acesso &#x27;ecotx-level-2&#x27; com cobrança no Asaas[False] e chave = 60.
-DEBUG    MeuLogger:TestSuit.py:122 🔄 Ambiente zerado após o teste.<br/></div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">TestSuit.py::TestLogin::test_standard_sem_asaas</td>
-          <td class="col-duration">312.81</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="log">[gw3] linux -- Python 3.8.10 /usr/bin/python3<br/>[gw3] linux -- Python 3.8.10 /usr/bin/python3[gw3] linux -- Python 3.8.10 /usr/bin/python3[gw3] linux -- Python 3.8.10 /usr/bin/python3<br/> -------------------------------Captured log call-------------------------------- <br/>DEBUG    MeuLogger:TestSuit.py:38 🛠️ Configurando ambiente para o teste
-ERROR    MeuLogger:auxiliar.py:49 ❌ Erro: O elemento não desapareceu dentro de 120 segundos. -&gt; Elemento:(&#x27;xpath&#x27;, &#x27;//*[@id=&quot;splash-screen&quot;]&#x27;)
-DEBUG    MeuLogger:Pages.py:59 ⚠️ Tentativa 1: Recarregando a página...
-DEBUG    MeuLogger:Pages.py:55 ℹ️ Login efetuado e ambiente Web carregado!
-DEBUG    MeuLogger:Pages.py:80 ℹ️ Organização trocada para: Vigilant.
-DEBUG    MeuLogger:Pages.py:89 ℹ️ Login efetuado e ambiente Web carregado!
-DEBUG    MeuLogger:Pages.py:103 ℹ️ Area trocada para: Backoffice.
-DEBUG    MeuLogger:Pages.py:118 ℹ️ Login efetuado e ambiente Backoffice carregado!
-DEBUG    MeuLogger:Pages.py:133 ℹ️ Area trocada para: Gerenciamento de Assinaturas.
-DEBUG    MeuLogger:Pages.py:138 ℹ️ Sub-area trocada para: Criar nova assinatura.
-DEBUG    MeuLogger:Pages.py:182 ℹ️ Usuário e Organização selecionados.
-DEBUG    MeuLogger:Pages.py:231 ℹ️ Assinatura preenchida para o acesso &#x27;ecotx-level-1&#x27; com cobrança no Asaas[False] e chave = 74.
-INFO     MeuLogger:TestSuit.py:92 ✅ Assinatura criada para o acesso &#x27;ecotx-level-1&#x27; com cobrança no Asaas[False] e chave = 74.
-DEBUG    MeuLogger:TestSuit.py:122 🔄 Ambiente zerado após o teste.<br/></div></td></tr></tbody></table></body></html>
+DEBUG    MeuLogger:Pages.py:118 ℹ️ Login efetuado e ambiente Backoffice carregado!<br/></div></td></tr></tbody></table></body></html>

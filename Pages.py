@@ -151,7 +151,7 @@ class BackofficeCriarAssinatura:
         self.concluir_assinatura = (By.XPATH, "/html[1]/body[1]/app-layout[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/app-subscriptions-management[1]/app-create-new-subscription[1]/div[1]/div[2]/div[1]/div[2]/div[2]/div[2]/button[1]")
         self.confirmar_assinatura = (By.XPATH, "/html[1]/body[1]/app-layout[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/app-subscriptions-management[1]/app-create-new-subscription[1]/div[1]/div[2]/div[1]/div[2]/div[2]/div[2]/button[1]")
         self.user = "nicolas.rossoni@datlaz.com"
-        self.org = "TesteSegments"
+        self.org = "TesteNicolas"
     
     # Método para criar uma assinatura para um usuário existente
     def criar_assinatura_usuario_existente(self, assinatura, cobrança_no_asaas):
