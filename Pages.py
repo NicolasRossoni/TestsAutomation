@@ -174,7 +174,7 @@ class BackofficeCriarAssinatura:
         self.driver.switch_to.active_element.send_keys(self.org[:5])
         sleep(3)
         self.driver.switch_to.active_element.send_keys(self.org[5:])
-        sleep(5)
+        sleep(10)
         self.driver.switch_to.active_element.send_keys(Keys.ENTER)
         self.driver.switch_to.active_element.send_keys(Keys.TAB)
         

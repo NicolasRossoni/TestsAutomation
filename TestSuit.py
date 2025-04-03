@@ -39,7 +39,7 @@ class TestLogin(unittest.TestCase):
 
         # Configura as opções do navegador Chrome
         self.options = Options()
-        #self.options.add_argument("--headless")
+        self.options.add_argument("--headless")
         self.options.add_argument("--start-maximized")
         self.service = Service("drivers/chromedriver")
         self.driver = webdriver.Chrome(service=self.service, options=self.options)
@@ -96,7 +96,7 @@ class TestLogin(unittest.TestCase):
         # Se o tempo expirar sem encontrar a requisição esperada, o teste falha
         self.fail(f"Timeout: Nenhuma requisição para subscription foi detectada em {max_wait_time} segundos")
     
-    """
+    
     # Teste para criar assinatura do tipo Venda+, Standard e Profissional sem integração com Asaas
     def test_venda_mais_sem_asaas(self):
         self.verificar_criacao_assinatura("Venda+", False)
@@ -107,19 +107,21 @@ class TestLogin(unittest.TestCase):
     def test_professional_sem_asaas(self):
         self.verificar_criacao_assinatura("Professional", False)
     """
+    """
     
+    """
     # Teste para criar assinatura do tipo Venda+, Standard e Profissional com integração com Asaas
     def test_venda_mais_com_asaas(self):
         self.verificar_criacao_assinatura("Venda+", True)
         
-    """   
+      
     def test_standard_com_asaas(self):
         self.verificar_criacao_assinatura("Standard", True)
         
     def test_professional_com_asaas(self):
         self.verificar_criacao_assinatura("Professional", True)
-    """
     
+    """ 
     # Método executado após cada teste para limpar o ambiente
     def tearDown(self):
         self.driver.quit()
