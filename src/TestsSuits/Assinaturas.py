@@ -21,12 +21,10 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from seleniumwire import webdriver
-from auxiliar import logger
-from time import sleep, time
 import unittest
-import Pages
-import json
-from pprint import pprint
+from src import Pages
+from src.auxiliar import logger
+import src.auxiliar as aux
 
 # Lista de assinaturas disponíveis no sistema
 nomes_de_assinaturas = ["Venda+", "Standard", "Professional", "Chile", "Portugal", "Telecom"]
@@ -41,7 +39,7 @@ class TestLogin(unittest.TestCase):
         self.options = Options()
         self.options.add_argument("--headless")
         self.options.add_argument("--start-maximized")
-        self.service = Service("drivers/chromedriver")
+        self.service = Service("../../drivers/chromedriver")
         self.driver = webdriver.Chrome(service=self.service, options=self.options)
 
         # Acessa a URL da plataforma
@@ -67,59 +65,38 @@ class TestLogin(unittest.TestCase):
         self.backoffice.trocar_area("Gerenciamento de Assinaturas")
         self.backoffice.trocar_sub_area("Criar nova assinatura")
 
-    # Método para verificar a criação de uma assinatura
-    def verificar_criacao_assinatura(self, tipo_assinatura, com_asaas):
-        max_wait_time = 120
-        start_time = time()
-        
-        # Cria a assinatura para um usuário existente
+    # Método para criar uma assinatura
+    def criar_assinatura(self, tipo_assinatura, com_asaas):
         acessos, cobrança_no_asaas, chave_da_assinatura = self.backoffice_criar_assinatura.criar_assinatura_usuario_existente(tipo_assinatura, com_asaas)
-        
-        # Verifica se a requisição foi bem sucedida dentro do tempo limite
-        while time() - start_time < max_wait_time:
-            # Percorre todas as requisições feitas pelo navegador
-            for request in self.driver.requests:
-                # Verifica se é uma requisição relacionada a assinaturas e se tem resposta
-                if 'subscription' in request.url and request.response:
-                    # Verifica se a resposta não foi bem sucedida (status diferente de 200)
-                    if request.response.status_code != 200:
-                        logger.error(f"❌ Erro: A requisição teve status {request.response.status_code}")
-                        print("\n=== RESPOSTA DA API ===")
-                        pprint(json.loads(request.response.body.decode('utf-8')))  # Exibe formatado de forma legível
-                        print("======================\n")
-                        self.fail(f"Erro na requisição para {tipo_assinatura}: Status {request.response.status_code}")
-                        
-                    logger.info(f"✅ Assinatura criada para o acesso '{acessos}' com cobrança no Asaas[{cobrança_no_asaas}] e chave = {chave_da_assinatura}.")
-                    return
-            sleep(2)  
-        
-        # Se o tempo expirar sem encontrar a requisição esperada, o teste falha
-        self.fail(f"Timeout: Nenhuma requisição para subscription foi detectada em {max_wait_time} segundos")
-    
+        status = aux.verifica_chamada_api(self.driver, "subscription")
+        if status:
+            logger.info(f"✅ Assinatura criada para o acesso '{acessos}' com cobrança no Asaas[{cobrança_no_asaas}] e chave = {chave_da_assinatura}.")
+        else:
+            self.fail(f"A requisição para a API falhou, para o acesso '{acessos}' com Asaas[{cobrança_no_asaas}].")
     
     # Teste para criar assinatura do tipo Venda+, Standard e Profissional sem integração com Asaas
     def test_venda_mais_sem_asaas(self):
-        self.verificar_criacao_assinatura("Venda+", False)
-
+        self.criar_assinatura("Venda+", False)
+        
     def test_standard_sem_asaas(self):
-        self.verificar_criacao_assinatura("Standard", False)
+        self.criar_assinatura("Standard", False)
         
     def test_professional_sem_asaas(self):
-        self.verificar_criacao_assinatura("Professional", False)
+        self.criar_assinatura("Professional", False)
     """
     """
     
     """
     # Teste para criar assinatura do tipo Venda+, Standard e Profissional com integração com Asaas
     def test_venda_mais_com_asaas(self):
-        self.verificar_criacao_assinatura("Venda+", True)
+        self.criar_assinatura("Venda+", True)
         
       
     def test_standard_com_asaas(self):
-        self.verificar_criacao_assinatura("Standard", True)
+        self.criar_assinatura("Standard", True)
         
     def test_professional_com_asaas(self):
-        self.verificar_criacao_assinatura("Professional", True)
+        self.criar_assinatura("Professional", True)
     
     """ 
     # Método executado após cada teste para limpar o ambiente
@@ -131,4 +108,4 @@ if __name__ == "__main__":
     unittest.main()
 
 # Para rodar e gerar relatório:
-# pytest TestSuit.py -n auto --html=TestSuit_report.html
+# pytest src/TestsSuits/<nome_do_arquivo>.py -n auto --html=src/TestSuit_report.html

@@ -23,7 +23,9 @@ from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 import logging
-from time import sleep
+from time import sleep, time
+import pprint
+import json
 
 # Função que espera elemento aparecer e retorna o elemento
 def find_element(driver, path, tempo=120):
@@ -61,12 +63,30 @@ def find_element_in_element(elemento_pai, texto_busca, tentativas=10):
     logger.error(f"❌ Erro: O elemento de texto {texto_busca}, não apareceu na seleção.") 
     raise
 
+# Função que verifica se a requisição foi bem sucedida
+def verifica_chamada_api(driver, url, max_wait_time=120):
+    start_time = time()
+    
+    # Verifica se a requisição foi bem sucedida dentro do tempo limite
+    while time() - start_time < max_wait_time:
+        # Percorre todas as requisições feitas pelo navegador
+        for request in driver.requests:
+            if url in request.url and request.response:
+                if request.response.status_code != 200:
+                    logger.error(f"❌ Erro: A requisição com {url} teve status {request.response.status_code}\n==== RESPOSTA DA API ====\n{pprint.pformat(json.loads(request.response.body.decode('utf-8')))}\n======================")
+                    return False
+                logger.debug(f"✅ A requisição com {url} teve status {request.response.status_code}")
+                return True
+        sleep(2)
+    logger.error(f"❌ Erro: A requisição com {url} não foi encontrada dentro de {max_wait_time} segundos.")
+    return False
+
 # Configuração do logger
 logger = logging.getLogger("MeuLogger")
 logger.setLevel(logging.DEBUG)
 formatter = logging.Formatter("%(asctime)s - %(levelname)s - %(message)s", datefmt="%Y-%m-%d %H:%M:%S")
 
-# Handler para o arquivo de log
-file_handler = logging.FileHandler("TestSuit.log", mode="w")
-file_handler.setFormatter(formatter)
-logger.addHandler(file_handler)
+# Handler para o console
+console_handler = logging.StreamHandler()
+console_handler.setFormatter(formatter)
+logger.addHandler(console_handler)

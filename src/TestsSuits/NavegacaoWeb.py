@@ -1,0 +1,86 @@
+"""
+================================================================================
+--- Este arquivo implementa testes automatizados para o fluxo de criação de assinaturas
+    na plataforma, utilizando Selenium WebDriver e o padrão Page Object Model.
+
+--- Estrutura principal:
+    1. TestLogin: Classe de teste que herda de unittest.TestCase e contém:
+       - setUp(): Configura o ambiente de teste, faz login e navega até a área de criação
+       - verificar_criacao_assinatura(): Método central que cria e verifica assinaturas
+       - test_venda_mais_sem_asaas(): Teste específico para criação sem integração Asaas
+       - tearDown(): Limpa o ambiente após cada teste
+
+--- O teste monitora as requisições HTTP para verificar se a criação foi bem-sucedida,
+    buscando por chamadas à API que contenham 'subscription' na URL.
+
+--- Outros testes comentados ao final permitem verificar diferentes tipos de assinatura
+    (Standard, Profissional) e diferentes configurações (com/sem integração Asaas).
+================================================================================
+"""
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
+from seleniumwire import webdriver
+import unittest
+from src import Pages
+from src.auxiliar import logger
+import src.auxiliar as aux
+
+
+# Classe de teste para o fluxo de login e criação de assinaturas
+class TestLogin(unittest.TestCase):
+    # Método executado antes de cada teste para configurar o ambiente
+    def setUp(self):
+        logger.debug("🛠️ Configurando ambiente para o teste")
+
+        # Configura as opções do navegador Chrome
+        self.options = Options()
+        #self.options.add_argument("--headless")
+        self.options.add_argument("--start-maximized")
+        self.service = Service("../../drivers/chromedriver")
+        self.driver = webdriver.Chrome(service=self.service, options=self.options)
+
+        # Acessa a URL da plataforma
+        self.driver.get("https://platform.ecotx.dev/")
+        
+        # Inicializa as páginas que serão utilizadas nos testes
+        self.login_page = Pages.LoginPage(self.driver)
+        self.web_page = Pages.MainWebPage(self.driver)
+
+        # Efetua login na plataforma
+        self.login_page.preencher_usuario("nicolas.o.rossoni@gmail.com")
+        self.login_page.preencher_senha("123456")
+        self.login_page.clicar_login()
+        self.login_page.aguardar_carregar()
+        
+        # Navega até a área de criação de assinaturas no backoffice
+        self.web_page.trocar_org("Vigilant")
+        self.web_page.trocar_area("Backoffice")
+        self.driver.switch_to.window(self.driver.window_handles[-1])
+    
+    def test_trocar_org(self, org):
+        self.web_page.trocar_org(org)
+    
+    def test_entrar_(self, area):
+        self.web_page.trocar_area(area)
+    
+    
+    # Método para criar uma assinatura
+        acessos, cobrança_no_asaas, chave_da_assinatura = self.backoffice_criar_assinatura.criar_assinatura_usuario_existente(tipo_assinatura, com_asaas)
+        status = aux.verifica_chamada_api(self.driver, "subscription")
+        if status:
+            logger.info(f"✅ Assinatura criada para o acesso '{acessos}' com cobrança no Asaas[{cobrança_no_asaas}] e chave = {chave_da_assinatura}.")
+        else:
+            self.fail(f"A requisição para a API falhou, para o acesso '{acessos}' com Asaas[{cobrança_no_asaas}].")
+    
+    
+    # Método executado após cada teste para limpar o ambiente
+    def tearDown(self):
+        self.driver.quit()
+        logger.debug("🔄 Ambiente zerado após o teste.")
+
+if __name__ == "__main__":
+    unittest.main()
+
+# Para rodar e gerar relatório:
+# pytest TestSuit.py -n auto --html=TestSuit_report.html

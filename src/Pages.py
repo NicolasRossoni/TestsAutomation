@@ -20,8 +20,8 @@
 """
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
-import auxiliar as aux
-from auxiliar import logger
+import TestsSuits.Assinaturas.auxiliar as aux
+from TestsSuits.Assinaturas.auxiliar import logger
 from time import sleep
 from random import randint
 from selenium.common.exceptions import TimeoutException
@@ -226,9 +226,6 @@ class BackofficeCriarAssinatura:
         # Confirma a criação da assinatura
         sleep(2)
         aux.find_element(self.driver, self.confirmar_assinatura).click()
-        
-        # Registra a conclusão da criação da assinatura
-        logger.debug(f"ℹ️ Assinatura preenchida para o acesso '{acessos}' com cobrança no Asaas[{cobrança_no_asaas}] e chave = {chave_da_assinatura}.")
         
         # Retorna informações sobre a assinatura criada
         return acessos, cobrança_no_asaas, chave_da_assinatura
