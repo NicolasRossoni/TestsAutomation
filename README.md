@@ -1,78 +1,39 @@
 # Automação de Testes para Plataforma
 
-## Visão Geral
-Este projeto implementa testes automatizados para diversos fluxos na plataforma, utilizando Selenium WebDriver e seguindo o padrão Page Object Model (POM).
+Testes automatizados para a plataforma usando Selenium e Page Object Model.
 
-## Tecnologias Utilizadas
-- **Python**: Linguagem de programação principal
-- **Selenium**: Framework para automação de navegadores web
-- **POM (Page Object Model)**: Padrão de design que separa a lógica de teste da lógica de interação com a página
-- **unittest**: Framework de testes unitários do Python
-- **pytest**: Framework de testes com recursos adicionais e geração de relatórios
-- **logging**: Módulo para registro de logs estruturados durante a execução dos testes
+## Tecnologias
+- Python, Selenium, unittest/pytest
+- Page Object Model para estruturação dos testes
+- Logging para registro de execução
 
 ## Estrutura do Projeto
 
-### Diretório `core/`
+### `src/`
+- **NavegacaoWeb.py**: Testes de navegação entre áreas da plataforma
+- **Assinaturas.py**: Testes de criação de assinaturas
 
-#### auxiliar.py
-Fornece funções auxiliares para os testes de automação:
-- Funções de interação com elementos da interface
-- Função de verificação de chamadas API
-- Configuração do sistema de logging em console
-- Tratamento de exceções e timeouts
+### `src/core/`
+- **auxiliar.py**: Funções auxiliares para interação com elementos e tratamento de exceções
+- **Pages/**: Implementação do Page Object Model
+  - **\_\_init\_\_.py**: Centraliza importações das classes de páginas
+  - **Web/**: Páginas ao Web
+    - **Login.py**: Página de login
+    - **Web.py**: Navegação na página principal
+  - **Backoffice/**: Páginas relacionadas ao backoffice
+    - **Backoffice.py**: Navegação na área do backoffice
+    - **CriarAssinatura.py**: Gerencia fluxo de criação de assinaturas
 
-#### Pages.py
-Implementa o padrão Page Object Model para automação da plataforma:
-- **LoginPage**: Manipula a página de login e autenticação
-- **MainWebPage**: Manipula a navegação da página principal (troca de organização, área)
-- **Backoffice**: Manipula a página de backoffice e navegação entre suas áreas
-- **BackofficeCriarAssinatura**: Manipula o formulário de criação de assinaturas
-
-### Testes Implementados
-
-#### NavegacaoWeb.py
-Implementa testes para verificar a navegação entre diferentes áreas da plataforma:
-- Teste de navegação para a área de mapas
-- Teste de navegação para o backoffice
-- Teste de navegação para workspaces
-- Teste de navegação para dashboards
-
-#### Assinaturas.py
-Implementa testes para o fluxo de criação de assinaturas para usuarios existentes:
-- Criação de assinaturas do tipo Venda+, Standard e Professional
-- Suporte a configurações com e sem integração Asaas
-
-## Como Executar os Testes
-Para executar os testes e gerar um relatório HTML:
-
+## Execução
 ```bash
-# Para testes de navegação
-pytest NavegacaoWeb.py --html=core/TestSuit_report.html
+# Executar testes gerando relatorio
+pytest src/<TestSuit_Name>.py --html=src/core/report.html
 
-# Para testes de assinaturas
-pytest Assinaturas.py --html=core/TestSuit_report.html
+# Execução em paralelo
+pytest src/<TestSuit_Name>.py -n auto --html=src/core/report.html
 ```
 
-### Execução em Paralelo
-Para executar os testes em paralelo, utilize o pytest-xdist:
-
-```bash
-pytest <file_name>.py -n auto --html=core/TestSuit_report.html
-```
-
-## Instalação de Dependências
-Para instalar todas as dependências necessárias, execute o seguinte comando no terminal:
-
+## Instalação de dependencias
 ```bash
 pip install -r requirements.txt
 ```
-
-Este comando instalará todas as bibliotecas Python listadas no arquivo requirements.txt, incluindo:
-- selenium
-- selenium-wire
-- pytest
-- pytest-html
-- pytest-xdist
-- webdriver-manager
-- blinker

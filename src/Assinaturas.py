@@ -1,23 +1,10 @@
 """
-================================================================================
---- Este arquivo implementa testes automatizados para o fluxo de criação de assinaturas
-    na plataforma, utilizando Selenium WebDriver e o padrão Page Object Model.
+Testes automatizados para criação de assinaturas na plataforma.
 
---- Estrutura principal:
-    1. TestAssinaturas: Classe de teste que herda de unittest.TestCase e contém:
-       - setUp(): Configura o ambiente de teste, faz login e navega até a área de criação
-       - criar_assinatura(): Método central que cria e verifica assinaturas
-       - test_venda_mais_sem_asaas(): Teste para criação de assinatura Venda+ sem Asaas
-       - test_standard_sem_asaas(): Teste para criação de assinatura Standard sem Asaas
-       - test_professional_sem_asaas(): Teste para criação de assinatura Professional sem Asaas
-       - tearDown(): Limpa o ambiente após cada teste
-
---- O teste monitora as requisições HTTP para verificar se a criação foi bem-sucedida,
-    buscando por chamadas à API que contenham 'subscription' na URL.
-
---- Há também testes comentados para assinaturas com integração Asaas que podem
-    ser descomentados quando necessário.
-================================================================================
+Funcionalidades:
+- Criação de assinaturas de diferentes tipos (Venda+, Standard, Professional)
+- Suporte a usuários novos e existentes
+- Opções com e sem integração com Asaas
 """
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
@@ -40,17 +27,17 @@ class TestSuit(unittest.TestCase):
         self.options = Options()
         #self.options.add_argument("--headless")
         self.options.add_argument("--start-maximized")
-        self.service = Service("../drivers/chromedriver")
+        self.service = Service("drivers/chromedriver")
         self.driver = webdriver.Chrome(service=self.service, options=self.options)
 
         # Acessa a URL da plataforma
         self.driver.get("https://platform.ecotx.dev/")
         
         # Inicializa as páginas que serão utilizadas nos testes
-        self.login_page = Pages.LoginPage(self.driver)
-        self.web_page = Pages.MainWebPage(self.driver)
+        self.login_page = Pages.Login(self.driver)
+        self.web_page = Pages.Web(self.driver)
         self.backoffice = Pages.Backoffice(self.driver)
-        self.backoffice_criar_assinatura = Pages.BackofficeCriarAssinatura(self.driver)
+        self.backoffice_criar_assinatura = Pages.CriarAssinatura(self.driver)
 
         # Efetua login na plataforma
         self.login_page.preencher_usuario("nicolas.o.rossoni@gmail.com")
@@ -111,4 +98,4 @@ if __name__ == "__main__":
     unittest.main()
 
 # Para rodar e gerar relatório:
-# pytest Assinaturas.py -n auto --html=core/TestSuit_report.html
+# pytest src/Assinaturas.py -n auto --html=src/core/TestSuit_report.html

@@ -1,21 +1,13 @@
 """
-================================================================================
---- Este arquivo implementa testes automatizados para verificar a navegação
-    entre diferentes áreas da plataforma, utilizando Selenium WebDriver e o 
-    padrão Page Object Model.
+Testes automatizados de navegação entre áreas da plataforma.
 
---- Estrutura principal:
-    1. TestNavegacaoWeb: Classe de teste que herda de unittest.TestCase e contém:
-       - setUp(): Configura o ambiente de teste e faz login na plataforma
-       - test_entrar_mapa(): Testa a navegação para a área de mapas
-       - test_entrar_backoffice(): Testa a navegação para o backoffice
-       - test_entrar_workspaces(): Testa a navegação para a área de workspaces
-       - test_entrar_dashboards(): Testa a navegação para a área de dashboards
-       - tearDown(): Fecha o navegador após cada teste
+Testa a navegação entre as diferentes áreas:
+- Mapa
+- Backoffice
+- Workspaces
+- Dashboards
 
---- Cada teste verifica se a URL após a navegação contém o texto esperado,
-    garantindo que o redirecionamento para a área correta foi realizado com sucesso.
-================================================================================
+Cada teste verifica se a URL após a navegação contém o texto esperado.
 """
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -27,7 +19,7 @@ import core.auxiliar as aux
 from core.auxiliar import logger
 
 
-# Classe de teste para o fluxo de login e criação de assinaturas
+# Classe de teste para o fluxo de navegação entre áreas da plataforma
 class TestSuit(unittest.TestCase):
     # Método executado antes de cada teste para configurar o ambiente
     def setUp(self):
@@ -35,17 +27,17 @@ class TestSuit(unittest.TestCase):
 
         # Configura as opções do navegador Chrome
         self.options = Options()
-        self.options.add_argument("--headless")
+        #self.options.add_argument("--headless")
         self.options.add_argument("--start-maximized")
-        self.service = Service("../drivers/chromedriver")
+        self.service = Service("drivers/chromedriver")
         self.driver = webdriver.Chrome(service=self.service, options=self.options)
 
         # Acessa a URL da plataforma
         self.driver.get("https://platform.ecotx.dev/")
         
         # Inicializa as páginas que serão utilizadas nos testes
-        self.login_page = Pages.LoginPage(self.driver)
-        self.web_page = Pages.MainWebPage(self.driver)
+        self.login_page = Pages.Login(self.driver)
+        self.web_page = Pages.Web(self.driver)
 
         # Efetua login na plataforma
         self.login_page.preencher_usuario("nicolas.o.rossoni@gmail.com")
@@ -98,4 +90,4 @@ if __name__ == "__main__":
     unittest.main()
 
 # Para rodar e gerar relatório:
-# pytest NavegacaoWeb.py -n auto --html=core/TestSuit_report.html
+# pytest src/NavegacaoWeb.py -n auto --html=src/core/TestSuit_report.html

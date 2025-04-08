@@ -1,25 +1,10 @@
 """
-================================================================================
---- Este arquivo fornece funções auxiliares para os testes de automação,
-    encapsulando operações comuns do Selenium WebDriver e configurações de logging.
+Funções auxiliares para automação de testes com Selenium.
 
---- Estrutura principal:
-    1. Funções de interação com elementos da interface:
-       - find_element: Localiza um elemento na página com timeout
-       - wait_for_element: Aguarda um elemento desaparecer da página
-       - find_element_in_element: Busca um elemento dentro de outro elemento por texto
-    
-    2. Função de verificação de API:
-       - verifica_chamada_api: Verifica se uma chamada de API foi bem-sucedida
-
-    3. Configuração do sistema de logging:
-       - Configuração do logger para exibir informações no console
-       - Formatação das mensagens com timestamp e níveis de log (DEBUG, INFO, ERROR)
-
---- Estas funções auxiliares são utilizadas pelos outros arquivos do projeto
-    para simplificar o código de automação, reduzir duplicação e melhorar a
-    legibilidade ao centralizar a lógica de espera e tratamento de exceções.
-================================================================================
+Funcionalidades:
+- Interação com elementos da interface (busca, espera)
+- Verificação de chamadas API
+- Configuração de logging para os testes
 """
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import TimeoutException
