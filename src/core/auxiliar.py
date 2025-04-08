@@ -7,13 +7,16 @@
     1. Funções de interação com elementos da interface:
        - find_element: Localiza um elemento na página com timeout
        - wait_for_element: Aguarda um elemento desaparecer da página
-       - find_element_in_element: Busca um elemento dentro de outro elemento
+       - find_element_in_element: Busca um elemento dentro de outro elemento por texto
+    
+    2. Função de verificação de API:
+       - verifica_chamada_api: Verifica se uma chamada de API foi bem-sucedida
 
-    2. Configuração do sistema de logging:
-       - Configuração do logger para registrar informações no arquivo TestSuit.log
+    3. Configuração do sistema de logging:
+       - Configuração do logger para exibir informações no console
        - Formatação das mensagens com timestamp e níveis de log (DEBUG, INFO, ERROR)
 
---- Estas funções auxiliares são utilizadas pelos arquivos Pages.py e TestSuit.py
+--- Estas funções auxiliares são utilizadas pelos outros arquivos do projeto
     para simplificar o código de automação, reduzir duplicação e melhorar a
     legibilidade ao centralizar a lógica de espera e tratamento de exceções.
 ================================================================================
@@ -75,7 +78,7 @@ def verifica_chamada_api(driver, url, max_wait_time=120):
                 if request.response.status_code != 200:
                     logger.error(f"❌ Erro: A requisição com {url} teve status {request.response.status_code}\n==== RESPOSTA DA API ====\n{pprint.pformat(json.loads(request.response.body.decode('utf-8')))}\n======================")
                     return False
-                logger.debug(f"✅ A requisição com {url} teve status {request.response.status_code}")
+                logger.info(f"✅ A requisição com {url} teve status {request.response.status_code}")
                 return True
         sleep(2)
     logger.error(f"❌ Erro: A requisição com {url} não foi encontrada dentro de {max_wait_time} segundos.")

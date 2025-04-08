@@ -20,8 +20,8 @@
 """
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
-import TestsSuits.Assinaturas.auxiliar as aux
-from TestsSuits.Assinaturas.auxiliar import logger
+from core import auxiliar as aux
+from core.auxiliar import logger
 from time import sleep
 from random import randint
 from selenium.common.exceptions import TimeoutException
