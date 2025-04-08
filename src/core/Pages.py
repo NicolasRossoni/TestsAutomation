@@ -86,7 +86,7 @@ class MainWebPage:
         for tentativa in range(3):
             try:
                 aux.wait_for_element(self.driver, self.splash_screen)
-                logger.debug("ℹ️ Login efetuado e ambiente Web carregado!")
+                logger.debug("ℹ️ Ambiente Web carregado!")
                 return
             except TimeoutException:
                 if tentativa < 2:
@@ -144,43 +144,77 @@ class BackofficeCriarAssinatura:
         self.tipo_usuario_existente = (By.XPATH, '//*[@id="inlineRadio1"]')
         self.tipo_novo_usuario = (By.XPATH, '//input[@id="inlineRadio2"]')
         self.selecione_usuario_existente = (By.XPATH, "/html[1]/body[1]/app-layout[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/app-subscriptions-management[1]/app-create-new-subscription[1]/div[1]/div[2]/div[1]/div[2]/div[1]/form[1]/div[2]/div[1]/ng-select[1]/div[1]/div[1]/div[3]/input[1]")
+        self.email_novo_usuario = (By.XPATH, "/html[1]/body[1]/app-layout[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/app-subscriptions-management[1]/app-create-new-subscription[1]/div[1]/div[2]/div[1]/div[2]/div[1]/form[1]/div[2]/div[1]/input[1]")
         self.selecione_assinatura = (By.XPATH, "/html[1]/body[1]/app-layout[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/app-subscriptions-management[1]/app-create-new-subscription[1]/div[1]/div[2]/div[1]/div[2]/div[1]/form[1]/div[3]/div[1]/ng-select[1]/div[1]/div[1]/div[3]/input[1]")
         self.campo_acessos = (By.XPATH, "/html/body/app-layout/div/div/div/div/div/div/app-subscriptions-management/app-create-new-subscription/div/div[2]/div/div[2]/div[1]/form/div[4]/div[2]/input")
         self.campo_preco = (By.XPATH, "/html[1]/body[1]/app-layout[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/app-subscriptions-management[1]/app-create-new-subscription[1]/div[1]/div[2]/div[1]/div[2]/div[1]/form[1]/div[5]/div[1]/input[1]")
         self.flag_asaas = (By.XPATH, "/html/body/app-layout/div/div/div/div/div/div/app-subscriptions-management/app-create-new-subscription/div/div[2]/div/div[2]/div[1]/form/div[9]/div/span/label")
         self.concluir_assinatura = (By.XPATH, "/html[1]/body[1]/app-layout[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/app-subscriptions-management[1]/app-create-new-subscription[1]/div[1]/div[2]/div[1]/div[2]/div[2]/div[2]/button[1]")
         self.confirmar_assinatura = (By.XPATH, "/html[1]/body[1]/app-layout[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/app-subscriptions-management[1]/app-create-new-subscription[1]/div[1]/div[2]/div[1]/div[2]/div[2]/div[2]/button[1]")
+        
+    # Método para criar uma assinatura para um usuário existente
+    def criar_assinatura(self, assinatura, cobrança_no_asaas, type):
+        chave_da_assinatura = randint(10, 99) # "Chave" da assinatura(2 digitos aleatorios)
+        
+        # Dados da assinatura
+        self.new_user = "nicolas.o.rossoni@usp.br"
         self.user = "nicolas.rossoni@datlaz.com"
         self.org = "TesteNicolas"
-    
-    # Método para criar uma assinatura para um usuário existente
-    def criar_assinatura_usuario_existente(self, assinatura, cobrança_no_asaas):
-        # Gera uma chave aleatória para identificar a assinatura
-        chave_da_assinatura = randint(10, 99)
         
-        # Clica no radio button de usuário existente
-        aux.find_element(self.driver, self.tipo_usuario_existente).click()
+        self.cpf = "10017074940"
+        self.name = "SeleniumBot" + str(chave_da_assinatura)
+        self.email = "SeleniumBot" + str(chave_da_assinatura) + "@gmail.com"
+        self.telefone = "41999900" + str(chave_da_assinatura)
+        
+        self.data_validade = ["01", "01", "2026"]
+        self.preco = str(chave_da_assinatura) + "000"
+        
+        if type == "existente":
+            # Preenche o campo de usuário
+            campo_usuario = aux.find_element(self.driver, self.selecione_usuario_existente)
+            campo_usuario.send_keys(self.user[:5])
+            sleep(3)
+            campo_usuario.send_keys(self.user[5:])
+            sleep(5)
+            campo_usuario.send_keys(Keys.ENTER)
+            campo_usuario.send_keys(Keys.TAB)
 
-        # Preenche o campo de usuário
-        campo_usuario = aux.find_element(self.driver, self.selecione_usuario_existente)
-        campo_usuario.send_keys(self.user[:5])
-        sleep(3)
-        campo_usuario.send_keys(self.user[5:])
-        sleep(5)
-        campo_usuario.send_keys(Keys.ENTER)
-        campo_usuario.send_keys(Keys.TAB)
+            # Preenche o campo de organização
+            self.driver.switch_to.active_element.send_keys(self.org[:5])
+            sleep(3)
+            self.driver.switch_to.active_element.send_keys(self.org[5:])
+            sleep(10)
+            self.driver.switch_to.active_element.send_keys(Keys.ENTER)
+            self.driver.switch_to.active_element.send_keys(Keys.TAB)
+            
+            self.driver.switch_to.active_element.send_keys(Keys.ENTER)
+            logger.debug("ℹ️ Usuário e Organização já existentes selecionados.")
 
-        # Preenche o campo de organização
-        self.driver.switch_to.active_element.send_keys(self.org[:5])
-        sleep(3)
-        self.driver.switch_to.active_element.send_keys(self.org[5:])
-        sleep(10)
-        self.driver.switch_to.active_element.send_keys(Keys.ENTER)
-        self.driver.switch_to.active_element.send_keys(Keys.TAB)
+        elif type == "novo":
+            aux.find_element(self.driver, self.tipo_novo_usuario).click()
+            campo_email = aux.find_element(self.driver, self.email_novo_usuario)
+            campo_email.send_keys(self.new_user)
+            self.driver.switch_to.active_element.send_keys(Keys.TAB)
+            self.driver.switch_to.active_element.send_keys(self.cpf)
+            self.driver.switch_to.active_element.send_keys(Keys.TAB)
+            self.driver.switch_to.active_element.send_keys(self.name)
+            self.driver.switch_to.active_element.send_keys(Keys.TAB)
+            self.driver.switch_to.active_element.send_keys(self.telefone)
+            self.driver.switch_to.active_element.send_keys(Keys.TAB)
+            self.driver.switch_to.active_element.send_keys(Keys.ENTER)
+            logger.debug("ℹ️ Dados do novo usuário preenchidos.")
         
-        self.driver.switch_to.active_element.send_keys(Keys.ENTER)
-        logger.debug("ℹ️ Usuário e Organização selecionados.")
+        else:
+            logger.error("❌ Erro: Tipo de usuário inválido.")
+            raise
         
+        # Preenche o resto dos dados da assinatura
+        acessos = self.preencher_assinatura(assinatura, cobrança_no_asaas, chave_da_assinatura)
+        
+        # Retorna informações sobre a assinatura criada
+        return acessos, cobrança_no_asaas, chave_da_assinatura
+        
+    def preencher_assinatura(self, assinatura, cobrança_no_asaas, chave_da_assinatura):
         # Preenche o campo de assinatura
         campo_assinatura = aux.find_element(self.driver, self.selecione_assinatura)
         campo_assinatura.send_keys(assinatura[:2])
@@ -191,9 +225,9 @@ class BackofficeCriarAssinatura:
         campo_assinatura.send_keys(Keys.TAB)
 
         # Preenche o campo de data de validade
-        self.driver.switch_to.active_element.send_keys("01")
-        self.driver.switch_to.active_element.send_keys("01")
-        self.driver.switch_to.active_element.send_keys("2026")
+        self.driver.switch_to.active_element.send_keys(self.data_validade[0])
+        self.driver.switch_to.active_element.send_keys(self.data_validade[1])
+        self.driver.switch_to.active_element.send_keys(self.data_validade[2])
         
         # Salvando os acessos para retornar no final
         campo_acessos = aux.find_element(self.driver, self.campo_acessos)
@@ -202,17 +236,17 @@ class BackofficeCriarAssinatura:
         
         # Preenche os campos de preço
         campo_preco = aux.find_element(self.driver, self.campo_preco)
-        campo_preco.send_keys(str(chave_da_assinatura)+"000")
+        campo_preco.send_keys(self.preco)
         campo_preco.send_keys(Keys.TAB)
         
         # Preenche os dados de cobrança (nome, email, CPF e telefone)
-        self.driver.switch_to.active_element.send_keys("SeleniumBot" + str(chave_da_assinatura))
+        self.driver.switch_to.active_element.send_keys(self.name)
         self.driver.switch_to.active_element.send_keys(Keys.TAB)
-        self.driver.switch_to.active_element.send_keys("SeleniumBot" + str(chave_da_assinatura) + "@gmail.com")
+        self.driver.switch_to.active_element.send_keys(self.email)
         self.driver.switch_to.active_element.send_keys(Keys.TAB)
-        self.driver.switch_to.active_element.send_keys("10017074940")
+        self.driver.switch_to.active_element.send_keys(self.cpf)
         self.driver.switch_to.active_element.send_keys(Keys.TAB)
-        self.driver.switch_to.active_element.send_keys("41" + "9999" + "00" + str(chave_da_assinatura))
+        self.driver.switch_to.active_element.send_keys(self.telefone)
         
         # Desativa a integração com ASAAS se necessário
         if not cobrança_no_asaas:
@@ -228,6 +262,4 @@ class BackofficeCriarAssinatura:
         aux.find_element(self.driver, self.confirmar_assinatura).click()
         
         # Retorna informações sobre a assinatura criada
-        return acessos, cobrança_no_asaas, chave_da_assinatura
-
-        
+        return acessos

@@ -38,7 +38,7 @@ class TestSuit(unittest.TestCase):
 
         # Configura as opções do navegador Chrome
         self.options = Options()
-        self.options.add_argument("--headless")
+        #self.options.add_argument("--headless")
         self.options.add_argument("--start-maximized")
         self.service = Service("../drivers/chromedriver")
         self.driver = webdriver.Chrome(service=self.service, options=self.options)
@@ -67,14 +67,15 @@ class TestSuit(unittest.TestCase):
         self.backoffice.trocar_sub_area("Criar nova assinatura")
 
     # Método para criar uma assinatura
-    def criar_assinatura(self, tipo_assinatura, com_asaas):
-        acessos, cobrança_no_asaas, chave_da_assinatura = self.backoffice_criar_assinatura.criar_assinatura_usuario_existente(tipo_assinatura, com_asaas)
+    def criar_assinatura(self, tipo_assinatura, com_asaas, tipo_usuario):
+        acessos, cobrança_no_asaas, chave_da_assinatura = self.backoffice_criar_assinatura.criar_assinatura(tipo_assinatura, com_asaas, tipo_usuario)
         status = aux.verifica_chamada_api(self.driver, "subscription")
         if status:
-            logger.info(f"✅ Assinatura criada para o acesso '{acessos}' com cobrança no Asaas[{cobrança_no_asaas}] e chave = {chave_da_assinatura}.")
+            logger.info(f"✅ Assinatura criada para o acesso '{acessos}' com cobrança no Asaas[{cobrança_no_asaas}], chave = {chave_da_assinatura} e usuario {tipo_usuario}.")
         else:
-            self.fail(f"A requisição para a API falhou, para o acesso '{acessos}' com Asaas[{cobrança_no_asaas}].")
+            self.fail(f"A requisição para a API falhou, para o acesso '{acessos}' com Asaas[{cobrança_no_asaas}] e usuario {tipo_usuario}.")
     
+    """
     # Teste para criar assinatura do tipo Venda+, Standard e Profissional sem integração com Asaas
     def test_venda_mais_sem_asaas(self):
         self.criar_assinatura("Venda+", False)
@@ -84,7 +85,6 @@ class TestSuit(unittest.TestCase):
         
     def test_professional_sem_asaas(self):
         self.criar_assinatura("Professional", False)
-    
     
     # Teste para criar assinatura do tipo Venda+, Standard e Profissional com integração com Asaas
     def test_venda_mais_com_asaas(self):
@@ -96,9 +96,12 @@ class TestSuit(unittest.TestCase):
         
     def test_professional_com_asaas(self):
         self.criar_assinatura("Professional", True)
-    
     """
-    """ 
+    
+    def test_venda_mais_sem_asaas_novo_usuario(self):
+        self.criar_assinatura("Venda+", False, "novo")
+        
+    
     # Método executado após cada teste para limpar o ambiente
     def tearDown(self):
         self.driver.quit()

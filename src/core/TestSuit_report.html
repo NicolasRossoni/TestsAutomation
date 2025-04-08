@@ -253,10 +253,10 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
 }
 </script>
     <h1>TestSuit_report.html</h1>
-    <p>Report generated on 08-Apr-2025 at 09:29:08 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v3.2.0</p>
+    <p>Report generated on 08-Apr-2025 at 15:55:45 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v3.2.0</p>
     <h2>Summary</h2>
-    <p>4 tests ran in 88.12 seconds. </p>
-    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="passed">4 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="failed">0 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>
+    <p>1 tests ran in 171.62 seconds. </p>
+    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="passed">0 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="failed">1 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>
     <h2>Results</h2>
     <table id="results-table">
       <thead id="results-table-head">
@@ -267,91 +267,45 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
           <th class="sortable links" col="links">Links</th></tr>
         <tr hidden="true" id="not-found-message">
           <th colspan="4">No results found. Try to check the filters</th></tr></thead>
-      <tbody class="passed results-table-row">
+      <tbody class="failed results-table-row">
         <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">NavegacaoWeb.py::TestNavegacaoWeb::test_entrar_backoffice</td>
-          <td class="col-duration">86.65</td>
+          <td class="col-result">Failed</td>
+          <td class="col-name">Assinaturas.py::TestSuit::test_venda_mais_sem_asaas_novo_usuario</td>
+          <td class="col-duration">169.17</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="log">[gw0] linux -- Python 3.11.4 /home/nicobico/Documents/TestsAutomation/venv/bin/python<br/>[gw0] linux -- Python 3.11.4 /home/nicobico/Documents/TestsAutomation/venv/bin/python[gw0] linux -- Python 3.11.4 /home/nicobico/Documents/TestsAutomation/venv/bin/python[gw0] linux -- Python 3.11.4 /home/nicobico/Documents/TestsAutomation/venv/bin/python<br/> ------------------------------Captured stderr call------------------------------ <br/>2025-04-08 09:27:41 - DEBUG - 🛠️ Configurando ambiente para o teste
-2025-04-08 09:28:21 - DEBUG - ℹ️ Login efetuado e ambiente Web carregado!
-2025-04-08 09:28:21 - DEBUG - ℹ️ Organização trocada para: Vigilant.
-2025-04-08 09:28:50 - DEBUG - ℹ️ Login efetuado e ambiente Web carregado!
-2025-04-08 09:28:50 - DEBUG - ℹ️ Area trocada para: Backoffice.
-2025-04-08 09:29:08 - INFO - ✅ URL verificada com sucesso: https://backoffice.ecotx.dev/
-2025-04-08 09:29:08 - DEBUG - 🔄 Ambiente zerado após o teste.
-<br/> -------------------------------Captured log call-------------------------------- <br/>DEBUG    MeuLogger:NavegacaoWeb.py:34 🛠️ Configurando ambiente para o teste
+            <div class="log">[gw0] linux -- Python 3.8.10 /usr/bin/python3<br/>[gw0] linux -- Python 3.8.10 /usr/bin/python3[gw0] linux -- Python 3.8.10 /usr/bin/python3<br/><br/>self = &lt;Assinaturas.TestSuit testMethod=test_venda_mais_sem_asaas_novo_usuario&gt;<br/><br/>    def test_venda_mais_sem_asaas_novo_usuario(self):<br/>&gt;       self.criar_assinatura(&quot;Venda+&quot;, False, &quot;novo&quot;)<br/><br/>Assinaturas.py:102: <br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/>Assinaturas.py:76: in criar_assinatura<br/>    self.fail(f&quot;A requisição para a API falhou, para o acesso &#x27;{acessos}&#x27; com Asaas[{cobrança_no_asaas}] e usuario {tipo_usuario}.&quot;)<br/><span class="error">E   AssertionError: A requisição para a API falhou, para o acesso &#x27;ecotx-vendamais&#x27; com Asaas[False] e usuario novo.[gw0] linux -- Python 3.8.10 /usr/bin/python3</span><br/> ------------------------------Captured stderr call------------------------------ <br/>2025-04-08 15:52:54 - DEBUG - 🛠️ Configurando ambiente para o teste
+2025-04-08 15:54:07 - DEBUG - ℹ️ Login efetuado e ambiente Web carregado!
+2025-04-08 15:54:08 - DEBUG - ℹ️ Organização trocada para: Vigilant.
+2025-04-08 15:54:53 - DEBUG - ℹ️ Login efetuado e ambiente Web carregado!
+2025-04-08 15:54:53 - DEBUG - ℹ️ Area trocada para: Backoffice.
+2025-04-08 15:55:13 - DEBUG - ℹ️ Login efetuado e ambiente Backoffice carregado!
+2025-04-08 15:55:21 - DEBUG - ℹ️ Area trocada para: Gerenciamento de Assinaturas.
+2025-04-08 15:55:21 - DEBUG - ℹ️ Sub-area trocada para: Criar nova assinatura.
+2025-04-08 15:55:26 - DEBUG - ℹ️ Dados do novo usuário preenchidos.
+2025-04-08 15:55:44 - ERROR - ❌ Erro: A requisição com subscription teve status 500
+==== RESPOSTA DA API ====
+{&#x27;error&#x27;: &#x27;Internal Server Error&#x27;,
+ &#x27;path&#x27;: &#x27;/api/core/orders/subscription/salesplus&#x27;,
+ &#x27;status&#x27;: 500,
+ &#x27;timestamp&#x27;: &#x27;2025-04-08T18:55:43.200+00:00&#x27;}
+======================
+2025-04-08 15:55:44 - DEBUG - 🔄 Ambiente zerado após o teste.
+<br/> -------------------------------Captured log call-------------------------------- <br/>DEBUG    MeuLogger:Assinaturas.py:37 🛠️ Configurando ambiente para o teste
 DEBUG    MeuLogger:Pages.py:55 ℹ️ Login efetuado e ambiente Web carregado!
 DEBUG    MeuLogger:Pages.py:80 ℹ️ Organização trocada para: Vigilant.
 DEBUG    MeuLogger:Pages.py:89 ℹ️ Login efetuado e ambiente Web carregado!
 DEBUG    MeuLogger:Pages.py:103 ℹ️ Area trocada para: Backoffice.
-INFO     MeuLogger:NavegacaoWeb.py:74 ✅ URL verificada com sucesso: https://backoffice.ecotx.dev/
-DEBUG    MeuLogger:NavegacaoWeb.py:95 🔄 Ambiente zerado após o teste.<br/></div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">NavegacaoWeb.py::TestNavegacaoWeb::test_entrar_workspaces</td>
-          <td class="col-duration">69.74</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="log">[gw3] linux -- Python 3.11.4 /home/nicobico/Documents/TestsAutomation/venv/bin/python<br/>[gw3] linux -- Python 3.11.4 /home/nicobico/Documents/TestsAutomation/venv/bin/python[gw3] linux -- Python 3.11.4 /home/nicobico/Documents/TestsAutomation/venv/bin/python[gw3] linux -- Python 3.11.4 /home/nicobico/Documents/TestsAutomation/venv/bin/python<br/> ------------------------------Captured stderr call------------------------------ <br/>2025-04-08 09:27:41 - DEBUG - 🛠️ Configurando ambiente para o teste
-2025-04-08 09:28:20 - DEBUG - ℹ️ Login efetuado e ambiente Web carregado!
-2025-04-08 09:28:20 - DEBUG - ℹ️ Organização trocada para: Vigilant.
-2025-04-08 09:28:51 - DEBUG - ℹ️ Login efetuado e ambiente Web carregado!
-2025-04-08 09:28:51 - DEBUG - ℹ️ Area trocada para: workspaces.
-2025-04-08 09:28:51 - INFO - ✅ URL verificada com sucesso: https://platform.ecotx.dev/workspaces
-2025-04-08 09:28:51 - DEBUG - 🔄 Ambiente zerado após o teste.
-<br/> -------------------------------Captured log call-------------------------------- <br/>DEBUG    MeuLogger:NavegacaoWeb.py:34 🛠️ Configurando ambiente para o teste
-DEBUG    MeuLogger:Pages.py:55 ℹ️ Login efetuado e ambiente Web carregado!
-DEBUG    MeuLogger:Pages.py:80 ℹ️ Organização trocada para: Vigilant.
-DEBUG    MeuLogger:Pages.py:89 ℹ️ Login efetuado e ambiente Web carregado!
-DEBUG    MeuLogger:Pages.py:103 ℹ️ Area trocada para: workspaces.
-INFO     MeuLogger:NavegacaoWeb.py:82 ✅ URL verificada com sucesso: https://platform.ecotx.dev/workspaces
-DEBUG    MeuLogger:NavegacaoWeb.py:95 🔄 Ambiente zerado após o teste.<br/></div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">NavegacaoWeb.py::TestNavegacaoWeb::test_entrar_dashboards</td>
-          <td class="col-duration">68.58</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="log">[gw1] linux -- Python 3.11.4 /home/nicobico/Documents/TestsAutomation/venv/bin/python<br/>[gw1] linux -- Python 3.11.4 /home/nicobico/Documents/TestsAutomation/venv/bin/python[gw1] linux -- Python 3.11.4 /home/nicobico/Documents/TestsAutomation/venv/bin/python[gw1] linux -- Python 3.11.4 /home/nicobico/Documents/TestsAutomation/venv/bin/python<br/> ------------------------------Captured stderr call------------------------------ <br/>2025-04-08 09:27:41 - DEBUG - 🛠️ Configurando ambiente para o teste
-2025-04-08 09:28:20 - DEBUG - ℹ️ Login efetuado e ambiente Web carregado!
-2025-04-08 09:28:20 - DEBUG - ℹ️ Organização trocada para: Vigilant.
-2025-04-08 09:28:49 - DEBUG - ℹ️ Login efetuado e ambiente Web carregado!
-2025-04-08 09:28:50 - DEBUG - ℹ️ Area trocada para: dashboards.
-2025-04-08 09:28:50 - INFO - ✅ URL verificada com sucesso: https://platform.ecotx.dev/dashboards
-2025-04-08 09:28:50 - DEBUG - 🔄 Ambiente zerado após o teste.
-<br/> -------------------------------Captured log call-------------------------------- <br/>DEBUG    MeuLogger:NavegacaoWeb.py:34 🛠️ Configurando ambiente para o teste
-DEBUG    MeuLogger:Pages.py:55 ℹ️ Login efetuado e ambiente Web carregado!
-DEBUG    MeuLogger:Pages.py:80 ℹ️ Organização trocada para: Vigilant.
-DEBUG    MeuLogger:Pages.py:89 ℹ️ Login efetuado e ambiente Web carregado!
-DEBUG    MeuLogger:Pages.py:103 ℹ️ Area trocada para: dashboards.
-INFO     MeuLogger:NavegacaoWeb.py:90 ✅ URL verificada com sucesso: https://platform.ecotx.dev/dashboards
-DEBUG    MeuLogger:NavegacaoWeb.py:95 🔄 Ambiente zerado após o teste.<br/></div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">NavegacaoWeb.py::TestNavegacaoWeb::test_entrar_mapa</td>
-          <td class="col-duration">69.57</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="log">[gw2] linux -- Python 3.11.4 /home/nicobico/Documents/TestsAutomation/venv/bin/python<br/>[gw2] linux -- Python 3.11.4 /home/nicobico/Documents/TestsAutomation/venv/bin/python[gw2] linux -- Python 3.11.4 /home/nicobico/Documents/TestsAutomation/venv/bin/python[gw2] linux -- Python 3.11.4 /home/nicobico/Documents/TestsAutomation/venv/bin/python<br/> ------------------------------Captured stderr call------------------------------ <br/>2025-04-08 09:27:41 - DEBUG - 🛠️ Configurando ambiente para o teste
-2025-04-08 09:28:20 - DEBUG - ℹ️ Login efetuado e ambiente Web carregado!
-2025-04-08 09:28:21 - DEBUG - ℹ️ Organização trocada para: Vigilant.
-2025-04-08 09:28:50 - DEBUG - ℹ️ Login efetuado e ambiente Web carregado!
-2025-04-08 09:28:51 - DEBUG - ℹ️ Area trocada para: mapa.
-2025-04-08 09:28:51 - INFO - ✅ URL verificada com sucesso: https://platform.ecotx.dev/maps
-2025-04-08 09:28:51 - DEBUG - 🔄 Ambiente zerado após o teste.
-<br/> -------------------------------Captured log call-------------------------------- <br/>DEBUG    MeuLogger:NavegacaoWeb.py:34 🛠️ Configurando ambiente para o teste
-DEBUG    MeuLogger:Pages.py:55 ℹ️ Login efetuado e ambiente Web carregado!
-DEBUG    MeuLogger:Pages.py:80 ℹ️ Organização trocada para: Vigilant.
-DEBUG    MeuLogger:Pages.py:89 ℹ️ Login efetuado e ambiente Web carregado!
-DEBUG    MeuLogger:Pages.py:103 ℹ️ Area trocada para: mapa.
-INFO     MeuLogger:NavegacaoWeb.py:65 ✅ URL verificada com sucesso: https://platform.ecotx.dev/maps
-DEBUG    MeuLogger:NavegacaoWeb.py:95 🔄 Ambiente zerado após o teste.<br/></div></td></tr></tbody></table></body></html>
+DEBUG    MeuLogger:Pages.py:118 ℹ️ Login efetuado e ambiente Backoffice carregado!
+DEBUG    MeuLogger:Pages.py:133 ℹ️ Area trocada para: Gerenciamento de Assinaturas.
+DEBUG    MeuLogger:Pages.py:138 ℹ️ Sub-area trocada para: Criar nova assinatura.
+DEBUG    MeuLogger:Pages.py:205 ℹ️ Dados do novo usuário preenchidos.
+ERROR    MeuLogger:auxiliar.py:79 ❌ Erro: A requisição com subscription teve status 500
+==== RESPOSTA DA API ====
+{&#x27;error&#x27;: &#x27;Internal Server Error&#x27;,
+ &#x27;path&#x27;: &#x27;/api/core/orders/subscription/salesplus&#x27;,
+ &#x27;status&#x27;: 500,
+ &#x27;timestamp&#x27;: &#x27;2025-04-08T18:55:43.200+00:00&#x27;}
+======================
+DEBUG    MeuLogger:Assinaturas.py:108 🔄 Ambiente zerado após o teste.<br/></div></td></tr></tbody></table></body></html>
