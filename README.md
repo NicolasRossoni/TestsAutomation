@@ -15,7 +15,7 @@ Testes automatizados para a plataforma usando Selenium e Page Object Model.
 
 ### `src/core/`
 - **auxiliar.py**: Funções auxiliares para interação com elementos e tratamento de exceções
-- **Pages/**: Implementação do Page Object Model
+- **Pages/**: Implementação do Page Object Model (Como um pacote python)
   - **\_\_init\_\_.py**: Centraliza importações das classes de páginas
   - **Web/**: Páginas ao Web
     - **Login.py**: Página de login
