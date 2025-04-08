@@ -22,8 +22,3 @@ ENV/
 env.bak/
 venv.bak/
 
-# VS Code
-.vscode/
-
-# Other
-assets/
