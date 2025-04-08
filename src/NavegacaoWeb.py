@@ -28,7 +28,7 @@ from core.auxiliar import logger
 
 
 # Classe de teste para o fluxo de login e criação de assinaturas
-class TestNavegacaoWeb(unittest.TestCase):
+class TestSuit(unittest.TestCase):
     # Método executado antes de cada teste para configurar o ambiente
     def setUp(self):
         logger.debug("🛠️ Configurando ambiente para o teste")
