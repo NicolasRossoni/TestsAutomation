@@ -15,15 +15,6 @@ from time import sleep, time
 import pprint
 import json
 
-# Configuração do logger
-logger = logging.getLogger("MeuLogger")
-if not logger.handlers:  # Evita adicionar handlers múltiplas vezes
-    logger.setLevel(logging.DEBUG)
-    formatter = logging.Formatter("%(asctime)s - %(levelname)s - %(message)s", datefmt="%Y-%m-%d %H:%M:%S")
-    console_handler = logging.StreamHandler()
-    console_handler.setFormatter(formatter)
-    logger.addHandler(console_handler)
-
 # Função que espera elemento aparecer e retorna o elemento
 def find_element(driver, path, tempo=120):
     try:
@@ -77,3 +68,9 @@ def verifica_chamada_api(driver, url, max_wait_time=120):
         sleep(2)
     logger.error(f"❌ Erro: A requisição com {url} não foi encontrada dentro de {max_wait_time} segundos.")
     return False
+
+# Configuração do logger
+logger = logging.getLogger("MeuLogger")
+logger.setLevel(logging.DEBUG)
+formatter = logging.Formatter("%(asctime)s - %(levelname)s - %(message)s", datefmt="%Y-%m-%d %H:%M:%S")
+
