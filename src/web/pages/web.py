@@ -8,8 +8,8 @@ Responsabilidades:
 """
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
-from core import auxiliar as aux
-from core.auxiliar import logger
+import src.core.utils as utils
+from src.core.utils import logger
 from time import sleep
 from selenium.common.exceptions import TimeoutException
 
@@ -24,10 +24,10 @@ class Web:
     
     # Método para trocar de organização
     def trocar_org(self, org_name):
-        aux.find_element(self.driver, self.org_button).click()
-        org_list = aux.find_element(self.driver, self.org_list)
+        utils.find_element(self.driver, self.org_button).click()
+        org_list = utils.find_element(self.driver, self.org_list)
         
-        aux.find_element_in_element(org_list, org_name).click()
+        utils.find_element_in_element(org_list, org_name).click()
         logger.debug(f"ℹ️ Organização trocada para: {org_name}.")
                 
         self.aguardar_carregar()
@@ -36,7 +36,7 @@ class Web:
     def aguardar_carregar(self):
         for tentativa in range(3):
             try:
-                aux.wait_for_element(self.driver, self.splash_screen)
+                utils.wait_for_element(self.driver, self.splash_screen)
                 logger.debug("ℹ️ Ambiente Web carregado!")
                 return
             except TimeoutException:
@@ -49,6 +49,6 @@ class Web:
 
     # Método para trocar de área na plataforma
     def trocar_area(self, area):
-        areas_list = aux.find_element(self.driver, self.areas_lsit)
-        aux.find_element_in_element(areas_list, area).click()
+        areas_list = utils.find_element(self.driver, self.areas_lsit)
+        utils.find_element_in_element(areas_list, area).click()
         logger.debug(f"ℹ️ Area trocada para: {area}.") 

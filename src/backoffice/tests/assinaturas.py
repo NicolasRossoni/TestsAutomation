@@ -10,9 +10,11 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from seleniumwire import webdriver
 import unittest
-from core import Pages
-from core import auxiliar as aux
-from core.auxiliar import logger
+import src.web.pages as WebPages
+import src.backoffice.pages as BackofficePages
+import src.workspace.pages as WorkspacePages
+import src.core.utils as utils
+from src.core.utils import logger
 
 # Lista de assinaturas disponíveis no sistema
 nomes_de_assinaturas = ["Venda+", "Standard", "Professional", "Chile", "Portugal", "Telecom"]
@@ -27,7 +29,7 @@ class TestSuit(unittest.TestCase):
         self.options = Options()
         #self.options.add_argument("--headless")
         self.options.add_argument("--start-maximized")
-        self.service = Service("drivers/chromedriver")
+        self.service = Service("resources/drivers/chromedriver")
         self.driver = webdriver.Chrome(service=self.service, options=self.options)
 
         # Acessa a URL da plataforma
@@ -56,7 +58,7 @@ class TestSuit(unittest.TestCase):
     # Método para criar uma assinatura
     def criar_assinatura(self, tipo_assinatura, com_asaas, tipo_usuario):
         acessos, cobrança_no_asaas, chave_da_assinatura = self.backoffice_criar_assinatura.criar_assinatura(tipo_assinatura, com_asaas, tipo_usuario)
-        status = aux.verifica_chamada_api(self.driver, "subscription")
+        status = utils.verifica_chamada_api(self.driver, "subscription")
         if status:
             logger.info(f"✅ Assinatura criada para o acesso '{acessos}' com cobrança no Asaas[{cobrança_no_asaas}], chave = {chave_da_assinatura} e usuario {tipo_usuario}.")
         else:
@@ -98,4 +100,5 @@ if __name__ == "__main__":
     unittest.main()
 
 # Para rodar e gerar relatório:
-# pytest src/Assinaturas.py -n auto --html=src/core/TestSuit_report.html
+# pytest src/backoffice/tests/assinaturas.py -n auto --html=src/core/report.html
+

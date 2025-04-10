@@ -8,8 +8,8 @@ Responsabilidades:
 """
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
-from core import auxiliar as aux
-from core.auxiliar import logger
+import src.core.utils as utils
+from src.core.utils import logger
 from time import sleep
 from random import randint
 from selenium.common.exceptions import TimeoutException
@@ -25,21 +25,21 @@ class Login:
 
     # Método para preencher o campo de usuário
     def preencher_usuario(self, usuario):
-        aux.find_element(self.driver, self.username_input).send_keys(usuario)
+        utils.find_element(self.driver, self.username_input).send_keys(usuario)
 
     # Método para preencher o campo de senha
     def preencher_senha(self, senha):
-        aux.find_element(self.driver, self.password_input).send_keys(senha)
+        utils.find_element(self.driver, self.password_input).send_keys(senha)
 
     # Método para clicar no botão de login
     def clicar_login(self):
-        aux.find_element(self.driver, self.submit_button).click()
+        utils.find_element(self.driver, self.submit_button).click()
     
     # Método para aguardar o carregamento da página após o login
     def aguardar_carregar(self):
         for tentativa in range(3):
             try:
-                aux.wait_for_element(self.driver, self.splash_screen)
+                utils.wait_for_element(self.driver, self.splash_screen)
                 logger.debug("ℹ️ Login efetuado e ambiente Web carregado!")
                 return
             except TimeoutException:

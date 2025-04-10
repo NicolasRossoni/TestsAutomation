@@ -8,8 +8,8 @@ Responsabilidades:
 """
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
-from core import auxiliar as aux
-from core.auxiliar import logger
+import src.core.utils as utils
+from src.core.utils import logger
 from time import sleep
 from random import randint
 
@@ -47,7 +47,7 @@ class CriarAssinatura:
         
         if type == "existente":
             # Preenche o campo de usuário
-            campo_usuario = aux.find_element(self.driver, self.selecione_usuario_existente)
+            campo_usuario = utils.find_element(self.driver, self.selecione_usuario_existente)
             campo_usuario.send_keys(self.user[:5])
             sleep(3)
             campo_usuario.send_keys(self.user[5:])
@@ -67,8 +67,8 @@ class CriarAssinatura:
             logger.debug("ℹ️ Usuário e Organização já existentes selecionados.")
 
         elif type == "novo":
-            aux.find_element(self.driver, self.tipo_novo_usuario).click()
-            campo_email = aux.find_element(self.driver, self.email_novo_usuario)
+            utils.find_element(self.driver, self.tipo_novo_usuario).click()
+            campo_email = utils.find_element(self.driver, self.email_novo_usuario)
             campo_email.send_keys(self.new_user)
             self.driver.switch_to.active_element.send_keys(Keys.TAB)
             self.driver.switch_to.active_element.send_keys(self.cpf)
@@ -92,7 +92,7 @@ class CriarAssinatura:
         
     def preencher_assinatura(self, assinatura, cobrança_no_asaas, chave_da_assinatura):
         # Preenche o campo de assinatura
-        campo_assinatura = aux.find_element(self.driver, self.selecione_assinatura)
+        campo_assinatura = utils.find_element(self.driver, self.selecione_assinatura)
         campo_assinatura.send_keys(assinatura[:2])
         sleep(3)
         campo_assinatura.send_keys(assinatura[2:])
@@ -106,12 +106,12 @@ class CriarAssinatura:
         self.driver.switch_to.active_element.send_keys(self.data_validade[2])
         
         # Salvando os acessos para retornar no final
-        campo_acessos = aux.find_element(self.driver, self.campo_acessos)
+        campo_acessos = utils.find_element(self.driver, self.campo_acessos)
         acessos = campo_acessos.get_attribute('value')
         campo_acessos.send_keys(Keys.TAB)
         
         # Preenche os campos de preço
-        campo_preco = aux.find_element(self.driver, self.campo_preco)
+        campo_preco = utils.find_element(self.driver, self.campo_preco)
         campo_preco.send_keys(self.preco)
         campo_preco.send_keys(Keys.TAB)
         
@@ -127,14 +127,14 @@ class CriarAssinatura:
         # Desativa a integração com ASAAS se necessário
         if not cobrança_no_asaas:
             sleep(2)
-            aux.find_element(self.driver, self.flag_asaas).click()
+            utils.find_element(self.driver, self.flag_asaas).click()
         
         # Clica no botão para concluir a criação da assinatura
         sleep(2)    
-        aux.find_element(self.driver, self.concluir_assinatura).click()
+        utils.find_element(self.driver, self.concluir_assinatura).click()
                 
         # Confirma a criação da assinatura
         sleep(2)
-        aux.find_element(self.driver, self.confirmar_assinatura).click()
+        utils.find_element(self.driver, self.confirmar_assinatura).click()
         
         return acessos 

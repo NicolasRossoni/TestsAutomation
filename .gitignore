@@ -24,3 +24,7 @@ venv.bak/
 
 # VS Code
 .vscode/
+
+# Outros
+.html
+assets/

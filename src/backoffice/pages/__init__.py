@@ -8,10 +8,6 @@ exemplo:
 import Pages
 """
 
-# Importando classes da Web
-from core.Pages.Web.Login import Login
-from core.Pages.Web.Web import Web
-
 # Importando classes do Backoffice
-from core.Pages.Backoffice.Backoffice import Backoffice
-from core.Pages.Backoffice.CriarAssinatura import CriarAssinatura 
+from src.backoffice.pages.backoffice import Backoffice
+from src.backoffice.pages.criar_assinatura import CriarAssinatura 
